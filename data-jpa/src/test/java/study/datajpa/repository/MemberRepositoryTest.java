@@ -70,8 +70,7 @@ class MemberRepositoryTest {
 
     @Test
     public void testQuery(){
-
-        Member m1 = new Member("AAA", 20);
+        Member m1 = new Member("AAA", 10);
         Member m2 = new Member("BBB", 10);
 
         memberRepository.save(m1);
