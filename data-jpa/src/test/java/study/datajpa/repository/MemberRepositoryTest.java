@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import study.datajpa.entity.Member;
+import study.datajpa.entity.Team;
 
 import java.util.List;
 
@@ -18,6 +19,7 @@ class MemberRepositoryTest {
 
 
     @Autowired MemberRepository memberRepository;
+    @Autowired TeamJpaRepository teamJpaRepository;
 
 
     @Test
@@ -82,4 +84,46 @@ class MemberRepositoryTest {
 
 
     }
+
+
+    @Test
+    public void findUsernameList(){
+        Member m1 = new Member("AAA", 10);
+        Member m2 = new Member("BBB", 10);
+
+        memberRepository.save(m1);
+        memberRepository.save(m2);
+
+        List<String> usernameList = memberRepository.findUsernameList();
+
+
+        for (String s  : usernameList){
+            System.out.println("==" +s);
+        }
+
+    }
+
+
+    @Test
+    public void findMemberDto(){
+        Team team =  new Team("teamA");
+        teamJpaRepository.save(team);
+
+        Member m1 = new Member("AAA", 10);
+        m1.setTeam(team);
+        memberRepository.save(m1);
+
+
+
+
+
+        List<String> usernameList = memberRepository.findUsernameList();
+
+
+        for (String s  : usernameList){
+            System.out.println("==" +s);
+        }
+
+    }
+
 }
