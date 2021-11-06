@@ -30,4 +30,5 @@ public interface MemberRepository extends JpaRepository<Member , Long> {
     List<Member>  findByListMember(String username); //  컬렉션
     Member  findByUserListMember(String username); // 단건
     Optional<Member> findMemberByListMember(String username); // 단건 optional
+
 }
