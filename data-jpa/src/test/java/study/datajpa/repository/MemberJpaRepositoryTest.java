@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.in;
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -105,5 +106,18 @@ class MemberJpaRepositoryTest {
     }
 
 
+    @Test
+    public void  bulkUpdate(){
 
+        memberJpaRepository.save(new Member("mamber1"  , 10));
+        memberJpaRepository.save(new Member("mamber2"  , 20));
+        memberJpaRepository.save(new Member("mamber3"  , 30));
+        memberJpaRepository.save(new Member("mamber4"  , 40));
+        memberJpaRepository.save(new Member("mamber5"  , 50));
+
+        int resultCount =  memberJpaRepository.bulkAgePlus(20);
+
+
+        assertThat(resultCount).isEqualTo(3);
+    }
 }
