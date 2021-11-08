@@ -2,6 +2,7 @@ package study.datajpa.dto;
 
 
 import lombok.Data;
+import study.datajpa.entity.Team;
 
 @Data
 public class MemberDto {
@@ -15,6 +16,7 @@ public class MemberDto {
         this.username = username;
         this.teamName = teamName;
     }
+
 
 
 }
