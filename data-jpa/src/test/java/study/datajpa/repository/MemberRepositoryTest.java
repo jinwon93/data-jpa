@@ -11,6 +11,8 @@ import study.datajpa.dto.MemberDto;
 import study.datajpa.entity.Member;
 import study.datajpa.entity.Team;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,7 +27,8 @@ class MemberRepositoryTest {
 
     @Autowired MemberRepository memberRepository;
     @Autowired TeamJpaRepository teamJpaRepository;
-
+    @PersistenceContext
+    EntityManager em;
 
     @Test
     public void basicCRUD(){
@@ -168,5 +171,18 @@ class MemberRepositoryTest {
     }
 
 
+    @Test
+    public void  bulkUpdate(){
 
+        memberRepository.save(new Member("mamber1"  , 10));
+        memberRepository.save(new Member("mamber2"  , 20));
+        memberRepository.save(new Member("mamber3"  , 30));
+        memberRepository.save(new Member("mamber4"  , 40));
+        memberRepository.save(new Member("mamber5"  , 50));
+
+        int resultCount =  memberRepository.bulkAgePlus(20);
+
+
+        assertThat(resultCount).isEqualTo(3);
+    }
 }
