@@ -185,4 +185,10 @@ class MemberRepositoryTest {
 
         assertThat(resultCount).isEqualTo(3);
     }
+
+
+    @Test
+    public void Membercall(){
+        List<Member> result = memberRepository.findMemberCustom();
+    }
 }

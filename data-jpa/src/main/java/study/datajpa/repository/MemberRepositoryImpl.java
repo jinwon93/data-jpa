@@ -14,7 +14,8 @@ public class MemberRepositoryImpl  implements MemberRepositoryCustom{
 
     @Override
     public List<Member> findMemberCustom() {
-        return  em.createQuery("select m from  Member m");
+        return  em.createQuery("select m from  Member m")
+                .getResultList();
     }
 
 
