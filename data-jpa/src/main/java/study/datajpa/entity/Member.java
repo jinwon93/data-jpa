@@ -43,4 +43,6 @@ public class Member extends JpaBaseEntity {
         this.team = team;
         team.getMembers().add(this);
     }
+
+
 }

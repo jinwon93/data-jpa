@@ -27,20 +27,20 @@ public interface MemberRepository extends JpaRepository<Member , Long> , MemberR
     @Query("select new study.datajpa.dto.MemberDto(m.id , m.username, t.name) from Member m join m.team t")
     List<MemberDto> findMemberDto();
 
-    @Query("SELECT m from Member m where  m.username in :names")
+    @Query("select m from Member m where  m.username in :names")
     List<Member> findByNames(@Param("names") List<String> names);
 
 
-    List<Member>  findByListMember(String username); //  컬렉션
-    Member  findByUserListMember(String username); // 단건
-    Optional<Member> findMemberByListMember(String username); // 단건 optional
+//    List<Member>  findByListMember(String username); //  컬렉션
+//    List<Member>  findByUserListMember(String username); // 단건
+//    Optional<Member> findMemberByListMember(String username); // 단건 optional
 
     Page<Member> findByAge(int age , Pageable pageable);
 
 
-    @Modifying
-    @Query("update Member  m set m.age =  +1 where  m.age >= :age" )
-    int bulkAgePlus(@Param("age") int age);
+//    @Modifying
+//    @Query("update Member m  set m.age =  +1 where  m.age >= :age" )
+//    int bulkAgePlus(@Param("age") int age);
 
     @Query("select m from  Member  m left join fetch m.team")
     List<Member> findByMemberFetchJoin();
@@ -51,8 +51,8 @@ public interface MemberRepository extends JpaRepository<Member , Long> , MemberR
     List<Member> findAll();
 
 
-    @Query("select m from  Member  m")
-    @EntityGraph(attributePaths = ("team"))
-    List<Member> findMemberEntityGraph();
+//    @Query("select m from  Member  m")
+//    @EntityGraph(attributePaths = ("team"))
+//    List<Member> findMemberEntityGraph();
 
 }

@@ -16,15 +16,15 @@ public class JpaBaseEntity {
     private LocalDateTime createdDate;
     private LocalDateTime updatetime;
 
-    @PrePersist
-    public void prePersist(){
-        LocalDateTime now = LocalDateTime.now();
-        createdDate =  now;
-        updatetime = now;
-
-    }
-    @PrePersist
-    public  void  preUpdate(){
-        updatetime =  LocalDateTime.now();
-    }
+//    @PrePersist
+//    public void prePersist(){
+//        LocalDateTime now = LocalDateTime.now();
+//        createdDate =  now;
+//        updatetime = now;
+//
+//    }
+//    @PrePersist
+//    public  void  preUpdate(){
+//        updatetime =  LocalDateTime.now();
+//    }
 }
